@@ -1,0 +1,8 @@
+src/images/
+node_modules/
+tmp/
+.vs/
+.vscode/
+utils/*.js
+utils/client-id.ts
+utils/albums.ts
