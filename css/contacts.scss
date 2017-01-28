@@ -1,0 +1,30 @@
+.contacts.photo {
+	max-width: 50%;
+	margin: auto;
+}
+
+.contacts.photo > img {
+	max-height: 33vh;
+}
+
+.contacts .icon {
+	background-color: rgba(0,0,0, .04);
+}
+
+ul.contacts {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul.contacts > li {
+	list-style-type: none;
+}
+
+table.contacts {
+	text-align: left;
+
+	td {
+		vertical-align: middle;
+	}
+}

@@ -1,0 +1,7 @@
+﻿.not-mobile {
+  display: none; }
+
+@media (min-width: 550px) {
+  .not-mobile {
+    display: inline-block; } }
+
