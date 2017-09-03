@@ -32,7 +32,7 @@ export const render = (photo: Photo) => {
                         </div>
                     </div>
                 </div>
-            </div>`;
+            </div>\n`;
 };
 
 export const renderAlbum = (album: string, clientId: string) => {

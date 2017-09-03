@@ -1,4 +1,4 @@
-/// <reference path="../../typings/tsd.d.ts" />
+/// <reference path="../typings/tsd.d.ts" />
 var Orientation;
 (function (Orientation) {
     Orientation[Orientation["Portrait"] = 0] = "Portrait";

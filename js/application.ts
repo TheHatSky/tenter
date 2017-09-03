@@ -1,4 +1,4 @@
-/// <reference path="../../typings/tsd.d.ts" />
+/// <reference path="../typings/tsd.d.ts" />
 
 enum Orientation {
 	Portrait,
@@ -282,7 +282,7 @@ module Tenter {
                     this.infoHandler();
                     
                     setTimeout(function() {
-                        $('.loader').fadeOut(300);
+                        $('.loader').fadeOut(1000);
                     }, 1000);
 				},
                 afterSlideLoad: () => this.setInfoVisibility(),

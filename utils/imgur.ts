@@ -13,12 +13,15 @@ interface PersonInfo {
 
 export const parsePerson = (person): PersonInfo => {
     console.log(person);
+
     var parts = person.split(': ');
     var type = parts[0];
 
     var nameAndUrl = parts[1].replace(')', '').split('(');
     var name = nameAndUrl[0].trim();
-    var url = nameAndUrl[1] || "#";
+    var url = (nameAndUrl[1] || "#")
+        .replace('vk . com', 'vk.com')
+        .replace('facebook . com', 'facebook.com');
 
     var icon = url.indexOf('vk.com') >= 0 ?
         'vk' :
@@ -60,7 +63,6 @@ interface PhotoInfo {
 export const parseDescription = (photo): PhotoInfo => {
     let linkParts = photo.link.split('/');
     let fileName = linkParts[linkParts.length - 1].replace(".jpg", "");
-
     if (!photo.description)
         return {
             fileName: fileName,
