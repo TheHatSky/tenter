@@ -1,5 +1,7 @@
-import * as Albums from './albums';
+import { commercialAlbum, fashionAlbum, weddingsAlbum } from './albums';
 import { clientId } from './client-id';
 import { renderAlbum } from './render';
 
-renderAlbum(Albums.commercialAlbum, clientId);
+renderAlbum(commercialAlbum, clientId);
+renderAlbum(weddingsAlbum, clientId);
+renderAlbum(fashionAlbum, clientId);

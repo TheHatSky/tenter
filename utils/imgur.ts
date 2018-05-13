@@ -1,9 +1,5 @@
 import * as request from 'request';
 
-const weddingsAlbom = '6g2nn',
-    tenterAlbum = 'rDJ1P',
-    commercialAlbum = 'JFxe0';
-
 interface PersonInfo {
     type: string;
     name: string;
