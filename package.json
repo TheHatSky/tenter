@@ -1,26 +1,27 @@
 {
-  "name": "tenter",
-  "version": "1.1.0",
-  "description": "Personal website",
-  "main": "imgur.js",
-  "dependencies": {
-    "request": "^2.79.0"
-  },
-  "devDependencies": {
-    "@types/request": "0.0.39",
-    "request": "^2.79.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/thehat/tenter.git"
-  },
-  "author": "Artem Sakhatskiy <sakhatskiy@yahoo.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://gitlab.com/thehat/tenter/issues"
-  },
-  "homepage": "https://gitlab.com/thehat/tenter#README"
+    "name": "tenter",
+    "version": "1.1.0",
+    "description": "Personal website",
+    "main": "imgur.js",
+    "dependencies": {
+        "request": "^2.79.0"
+    },
+    "devDependencies": {
+        "@types/request": "0.0.39",
+        "ts-loader": "^4.3.0",
+        "typescript": "^2.8.3"
+    },
+    "scripts": {
+        "test": "echo \"No test specified\" && exit 0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@gitlab.com/thehat/tenter.git"
+    },
+    "author": "Artem Sakhatskiy <sakhatskiy@yahoo.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://gitlab.com/thehat/tenter/issues"
+    },
+    "homepage": "https://gitlab.com/thehat/tenter#README"
 }

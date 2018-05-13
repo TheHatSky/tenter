@@ -2248,53 +2248,6 @@
     <script src="js/vendor/evil-icons.js"></script>
     <script src="js/application.js"></script>
     <script>
-        Application.setWeddingsGallerySize(14);
-        Application.setFashionGallarySize(14);
-        Application.setCommercialGallerySize(14);
-    </script>
-    <script>
-        (function() {
-            var updateFunc = function() {
-                var idToBeRemoved = 'mobile_device';
-                var idToBeShown = 'other_device';
-
-                if (Application.settings.device == Device.Mobile) {
-                    idToBeRemoved = 'other_device';
-                    idToBeShown = 'mobile_device';
-                }
-
-                document.getElementById(idToBeRemoved).className = "none";
-                document.getElementById(idToBeShown).className = "";
-            };
-
-            updateFunc();
-            Application.addOnResize(updateFunc);
-        }());
-    </script>
-    <script>
-        (function() {
-            var updateFunc = function() {
-                var idToBeRemoved = "portrait_contacts";
-                var idToBeShown = "landscape_contacts";
-
-                if (Application.settings.orientation == Orientation.Portrait) {
-                    idToBeRemoved = "landscape_contacts";
-                    idToBeShown = "portrait_contacts";
-                }
-
-                document.getElementById(idToBeRemoved).className = "none";
-                document.getElementById(idToBeShown).className = "";
-
-                document
-                    .getElementById('contacts-container')
-                    .className = 'container ' + Application.settings.device.name
-            }
-
-            updateFunc();
-            Application.addOnResize(updateFunc);
-        }());
-    </script>
-    <script>
         WebFont.load({
             google: {
                 families: ['Open Sans:300,300italic:latin,cyrillic']
