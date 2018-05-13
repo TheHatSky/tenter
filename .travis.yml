@@ -2,7 +2,14 @@ language: node_js
 node_js:
   - "10"
 
-build:
+install:
   - npm i
   - npm i -g webpack webpack-cli
-  - webpack 
+
+script:
+  - webpack
+  - npm test
+
+cache:
+  directories:
+    - "node_modules"
