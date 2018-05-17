@@ -2,25 +2,17 @@ language: node_js
 node_js:
   - "10"
 
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install sshpass
+
 install:
   - npm i
 
-stages:
-  - compile
-  - test
-  - name: deploy
-    if: branch = master
-
-jobs:
-  include:
-    - stage: compile
-      script: node ./node_modules/webpack-cli/bin/webpack.js --mode development --env.WEDDINGS_ALBUM WEDDINGS_ALBUM --env.FASHION_ALBUM FASHION_ALBUM --env.COMMERCIAL_ALBUM COMMERCIAL_ALBUM --env.CLIENT_ID CLIENT_ID
-
-    - stage: test
-      script: npm test
-
-    - stage: deploy
-      script: echo hello deploy
+script:
+  - node ./node_modules/webpack-cli/bin/webpack.js --mode development --env.WEDDINGS_ALBUM WEDDINGS_ALBUM --env.FASHION_ALBUM FASHION_ALBUM --env.COMMERCIAL_ALBUM COMMERCIAL_ALBUM --env.CLIENT_ID CLIENT_ID
+  - npm test
+  - sshpass -p PASSWORD ssh "USERNAME"@"DEPLOY_MACHINE_IP" ~/deploy.sh
 
 cache:
   directories:
