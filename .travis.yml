@@ -10,9 +10,9 @@ install:
   - npm i
 
 script:
-  - node ./node_modules/webpack-cli/bin/webpack.js --mode development --env.WEDDINGS_ALBUM WEDDINGS_ALBUM --env.FASHION_ALBUM FASHION_ALBUM --env.COMMERCIAL_ALBUM COMMERCIAL_ALBUM --env.CLIENT_ID CLIENT_ID
+  - node ./node_modules/webpack-cli/bin/webpack.js --mode development --env.WEDDINGS_ALBUM $WEDDINGS_ALBUM --env.FASHION_ALBUM $FASHION_ALBUM --env.COMMERCIAL_ALBUM $COMMERCIAL_ALBUM --env.CLIENT_ID $CLIENT_ID
   - npm test
-  - sshpass -p PASSWORD ssh "USERNAME"@"DEPLOY_MACHINE_IP" ~/deploy.sh
+  - sshpass -p $PASSWORD ssh $USERNAME@$DEPLOY_MACHINE_IP ~/deploy.sh
 
 cache:
   directories:
