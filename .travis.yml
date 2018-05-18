@@ -15,7 +15,7 @@ install:
 script:
   - node ./node_modules/webpack-cli/bin/webpack.js --mode development --env.WEDDINGS_ALBUM $WEDDINGS_ALBUM --env.FASHION_ALBUM $FASHION_ALBUM --env.COMMERCIAL_ALBUM $COMMERCIAL_ALBUM --env.CLIENT_ID $CLIENT_ID
   - npm test
-  - rm -rf ./node_modules
+  - rm -rf ./node_modules && rm -rf ./.git
   - cd ..
   - tar -czf release.tar.gz tenter
   - sshpass -p $PASSWORD scp ./release.tar.gz $USERNAME@194.67.218.117:./release.tar.gz
