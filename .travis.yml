@@ -18,5 +18,5 @@ script:
   - rm -rf ./node_modules
   - cd ..
   - tar -czf release.tar.gz tenter
-  - sshpass -p $PASSWORD scp ./tenter.tar.gz $USERNAME@194.67.218.117:./release.tar.gz
+  - sshpass -p $PASSWORD scp ./release.tar.gz $USERNAME@194.67.218.117:./release.tar.gz
   - sshpass -p $PASSWORD ssh $USERNAME:$PASSWORD@194.67.218.117 sh ./deploy.sh
