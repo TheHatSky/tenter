@@ -8,7 +8,7 @@ interface PersonInfo {
 }
 
 export const parsePerson = (person): PersonInfo => {
-    console.log(person);
+    // console.log(person);
 
     var parts = person.split(': ');
     var type = parts[0];
@@ -47,6 +47,7 @@ export const getAltText = (persons) => {
 }
 
 interface PhotoInfo {
+    link: string;
     fileName: string;
     aspectRatio: number;
     description: {
@@ -61,6 +62,7 @@ export const parseDescription = (photo): PhotoInfo => {
     let fileName = linkParts[linkParts.length - 1].replace(".jpg", "");
     if (!photo.description)
         return {
+            link: photo.link,
             fileName: fileName,
             aspectRatio: photo.width / photo.height,
             description: {
@@ -85,6 +87,7 @@ export const parseDescription = (photo): PhotoInfo => {
     }
 
     return {
+        link: photo.link,
         fileName: fileName,
         aspectRatio: photo.width / photo.height,
         description: {
@@ -112,8 +115,7 @@ export const getImages = (album: string, clientId: string, callback: (info: Phot
         var galleryArray: PhotoInfo[] = [];
 
         photos.forEach((photo) => {
-            if (photo.description)
-                galleryArray.push(parseDescription(photo));
+            galleryArray.push(parseDescription(photo));
         });
 
         callback(galleryArray);

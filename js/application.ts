@@ -38,7 +38,8 @@ class Application {
 				var elem = $(element);
 				var imageName = elem.data('image-name');
 				//elem.css('background-image', 'url(/images/' + this.settings.device.imageFolder + '/' + imageName + ')');
-				elem.css('background-image', `url(https://i.imgur.com/${imageName}${this.settings.device.imgurThumbnail}.jpg)`);
+				//elem.css('background-image', `url(https://i.imgur.com/${imageName}${this.settings.device.imgurThumbnail}.jpg)`);
+				elem.css('background-image', `url(images/${imageName}${this.settings.device.thumbnail}.jpg)`);
 			});
 			
 			for (let key in this.sizes) {

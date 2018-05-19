@@ -1,3 +1,5 @@
+const http = require('https');
+const fs = require('fs');
 import { getImages } from "./imgur";
 
 interface Person {
@@ -47,6 +49,31 @@ export const renderAlbum = (album: string, clientId: string) => {
 
             results += render(photo);
         }
-        console.log(results);
     });
 };
+
+export const downloadAlbum = async (album: string, clientId: string) => {
+    await getImages(album, clientId, async (images) => {
+        for (let image of images) {
+            console.log("Downloading:", (image.description.title || "<no title>"), image.link);
+            await downloadFile(image.link, `./images/${image.fileName}_original.jpg`);
+            await downloadFile(getImageProxyLink(image.link, 1960), `./images/${image.fileName}l.jpg`);
+            await downloadFile(getImageProxyLink(image.link, 1280), `./images/${image.fileName}m.jpg`);
+            await downloadFile(getImageProxyLink(image.link, 800), `./images/${image.fileName}s.jpg`);
+        }
+    });
+}
+
+const downloadFile = (link, name) => {
+    return new Promise((resolve) => {
+        const file = fs.createWriteStream(name);
+        const request = http.get(link, (response) => {
+            response.pipe(file);
+            resolve();
+        });
+    })
+}
+
+const getImageProxyLink = (link: string, size: number) => {
+    return `https://images.weserv.nl/?url=${encodeURIComponent(link.replace("https://", ""))}&w=${size}&il`;
+}

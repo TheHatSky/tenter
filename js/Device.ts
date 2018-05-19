@@ -9,14 +9,14 @@ export enum DpiMode {
 }
 
 export class Device {
-	static Mobile = new Device("mobile", "s", "m", "1rem", "1rem");
-	static Phablet = new Device("phablet", "s", "l", "1rem", "1rem");
-	static Tablet = new Device("tablet", "m", "h", "1rem", "1rem");
-	static Desktop = new Device("desktop", "m", "h", "1rem", "1rem");
-	static DesktopHd = new Device("desktop-hd", "m", "", "1rem", "1rem");
+	static Mobile = new Device("mobile", "s", "s", "1rem", "1rem");
+	static Phablet = new Device("phablet", "s", "m", "1rem", "1rem");
+	static Tablet = new Device("tablet", "m", "l", "1rem", "1rem");
+	static Desktop = new Device("desktop", "m", "l", "1rem", "1rem");
+	static DesktopHd = new Device("desktop-hd", "m", "l", "1rem", "1rem");
     
 	public name: string;
-	public imgurThumbnail: string;
+	public thumbnail: string;
 	public iconSize: string;
 	public landscapeFontSize: string;
 	public portraitFontSize: string;
@@ -28,14 +28,14 @@ export class Device {
 	constructor(
 		name: string,
 		iconSize: string,
-		imgurThumbnail: string,
+		thumbnail: "s" | "m" | "l",
 		landscapeFontSize: string,
 		portraitFontSize: string
 	)
 	{
 		this.name = name;
 		this.iconSize = iconSize;
-		this.imgurThumbnail = imgurThumbnail;
+		this.thumbnail = thumbnail;
 		this.landscapeFontSize = landscapeFontSize;
 		this.portraitFontSize = portraitFontSize;
 	}

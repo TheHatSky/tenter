@@ -1,7 +1,11 @@
 import { commercialAlbum, fashionAlbum, weddingsAlbum } from './albums';
 import { clientId } from './client-id';
-import { renderAlbum } from './render';
+import { downloadAlbum } from './render';
 
-renderAlbum(commercialAlbum, clientId);
-renderAlbum(weddingsAlbum, clientId);
-renderAlbum(fashionAlbum, clientId);
+downloadAlbum(weddingsAlbum, clientId);
+downloadAlbum(fashionAlbum, clientId);
+downloadAlbum(commercialAlbum, clientId);
+
+// renderAlbum(commercialAlbum, clientId);
+// renderAlbum(weddingsAlbum, clientId);
+// renderAlbum(fashionAlbum, clientId);

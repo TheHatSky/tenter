@@ -1,4 +1,6 @@
-src/images/
+images/*
+!images/landing.jpg
+!images/contacts.jpg
 node_modules/
 tmp/
 .vs/
