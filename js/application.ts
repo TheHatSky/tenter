@@ -24,7 +24,20 @@ class Application {
 		};
 
 		$(this.initialize);
-		this.onScreenSizeChange();		
+
+		for(let name of ["eCOph24", "2SSDovb", "NNgTqg1"])
+		{
+			const imgS = new Image();
+			imgS.src = `./images/${name}s.jpg`;
+
+			const imgM = new Image();
+			imgM.src = `./images/${name}m.jpg`;
+
+			const imgL = new Image();
+			imgL.src = `./images/${name}l.jpg`;
+		}
+
+		this.onScreenSizeChange();
 	}
 
 	private updateGallaryBackgroudSize = (sizeChanged: boolean) => {
