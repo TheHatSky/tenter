@@ -27,15 +27,18 @@ class Application {
 
 		for(let name of ["eCOph24", "2SSDovb", "NNgTqg1"])
 		{
-			const imgS = new Image();
-			imgS.src = `./images/${name}s.jpg`;
-
-			const imgM = new Image();
-			imgM.src = `./images/${name}m.jpg`;
-
-			const imgL = new Image();
-			imgL.src = `./images/${name}l.jpg`;
+			const img = new Image();
+			img.src = `./images/${name}${this.settings.device.thumbnail}.jpg`;
 		}
+		
+		$('[data-image-name]').toArray().forEach((element, index) => {
+			var elem = $(element);
+			var imageName = elem.data('image-name');
+			//elem.css('background-image', 'url(/images/' + this.settings.device.imageFolder + '/' + imageName + ')');
+			//elem.css('background-image', `url(https://i.imgur.com/${imageName}${this.settings.device.imgurThumbnail}.jpg)`);
+			const imgL = new Image();
+			imgL.src = `images/${imageName}${this.settings.device.thumbnail}.jpg`;
+		});
 
 		this.onScreenSizeChange();
 	}
@@ -47,7 +50,7 @@ class Application {
 			$('.portrait').css('background-size', 'contain');
 
 		if (sizeChanged){
-			$('[data-image-name]').each((index, element) => {
+			$('[data-image-name]').toArray().forEach((element, index) => {
 				var elem = $(element);
 				var imageName = elem.data('image-name');
 				//elem.css('background-image', 'url(/images/' + this.settings.device.imageFolder + '/' + imageName + ')');
