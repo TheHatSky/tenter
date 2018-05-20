@@ -1,3 +1,4 @@
+const $ = require("./vendor/jquery.js");
 import { Device, DpiMode, Orientation } from "./Device";
 
 export class Settings {

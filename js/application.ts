@@ -1,3 +1,9 @@
+const $ = require("./vendor/jquery.js");
+import "./vendor/evil-icons.js";
+import "./vendor/jquery.fullPage.js";
+import "./vendor/jquery.slimscroll.min.js";
+import "./vendor/jquery.easings.min.js";
+
 import { Settings } from "./Settings";
 import { Orientation, Device } from "./Device";
 
