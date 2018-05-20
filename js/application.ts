@@ -29,6 +29,7 @@ class Application {
 			"commercial": 14
 		};
 
+		this.onOrientationChange();
 		$(this.initialize);
 
 		for(let name of ["eCOph24", "2SSDovb", "NNgTqg1"])
