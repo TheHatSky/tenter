@@ -1,8 +1,8 @@
-src/images/
+images/*
+!images/landing.jpg
+!images/contacts.jpg
 node_modules/
 tmp/
 .vs/
 .vscode/
-utils/*.js
-utils/client-id.ts
-utils/albums.ts
+dist/

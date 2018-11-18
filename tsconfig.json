@@ -1,7 +1,11 @@
 {
 	"compilerOptions": {
-		"module": "umd",
+		"module": "commonjs",
 		"jsx": "react",
-		"target": "es5"
-	}
+		"target": "es2015",
+		"sourceMap": true
+	},
+	"exclude": [
+		"node_modules"
+	]
 }
