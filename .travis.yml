@@ -3,7 +3,7 @@ node_js:
   - "10"
 
 addons:
-  ssh_known_hosts: 194.67.221.222
+  ssh_known_hosts: 194.67.217.78
 
 before_install:
   - sudo apt-get -qq update
@@ -19,5 +19,5 @@ script:
   - rm -rf ./node_modules && rm -rf ./.git
   - cd ..
   - tar -czf release.tar.gz tenter
-  - sshpass -p $PASSWORD scp ./release.tar.gz $USERNAME@194.67.221.222:./release.tar.gz
-  - sshpass -p $PASSWORD ssh $USERNAME:$PASSWORD@194.67.221.222 sh ./deploy.sh
+  - sshpass -p $PASSWORD scp ./release.tar.gz $USERNAME@194.67.217.78:./release.tar.gz
+  - sshpass -p $PASSWORD ssh $USERNAME:$PASSWORD@194.67.217.78 sh ./deploy.sh
