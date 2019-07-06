@@ -17,7 +17,6 @@ script:
   - webpack --mode production --env.WEDDINGS_ALBUM $WEDDINGS_ALBUM --env.FASHION_ALBUM $FASHION_ALBUM --env.COMMERCIAL_ALBUM $COMMERCIAL_ALBUM --env.CLIENT_ID $CLIENT_ID
   - npm test
   - rm -rf ./node_modules && rm -rf ./.git
-  - cd ..
-  - tar -czf release.tar.gz tenter
+  - tar -czf release.tar.gz ./*
   - sshpass -p $PASSWORD scp ./release.tar.gz $USERNAME@178.128.194.146:./release.tar.gz
-  - sshpass -p $PASSWORD ssh $USERNAME:$PASSWORD@178.128.194.146 sh ./deploy.sh
+  - sshpass -p $PASSWORD ssh $USERNAME:$PASSWORD@178.128.194.146 tar -xf release.tar.gz -C /var/www/tenter.me/html/
