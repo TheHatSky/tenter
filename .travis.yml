@@ -5,18 +5,28 @@ node_js:
 addons:
   ssh_known_hosts: 178.128.194.146
 
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install sshpass
+cache:
+  directories:
+    - node_modules
 
-install:
-  - yarn
-  - yarn global add webpack-cli@3.1.2 webpack@4
+branches:
+  only:
+    - master
 
-script:
-  - webpack --mode production --env.WEDDINGS_ALBUM $WEDDINGS_ALBUM --env.FASHION_ALBUM $FASHION_ALBUM --env.COMMERCIAL_ALBUM $COMMERCIAL_ALBUM --env.CLIENT_ID $CLIENT_ID
-  - npm test
-  - rm -rf ./node_modules && rm -rf ./.git
-  - tar -czf release.tar.gz ./*
-  - sshpass -p $PASSWORD scp ./release.tar.gz $USERNAME@178.128.194.146:./release.tar.gz
-  - sshpass -p $PASSWORD ssh $USERNAME:$PASSWORD@178.128.194.146 tar -xf release.tar.gz -C /var/www/tenter.me/html/
+jobs:
+  include:
+    - stage: build & deploy
+      before_install:
+        - sudo apt-get -qq update
+        - sudo apt-get install sshpass
+      install:
+        - yarn
+      script:
+        - yarn webpack --mode production --env.WEDDINGS_ALBUM $WEDDINGS_ALBUM --env.FASHION_ALBUM $FASHION_ALBUM --env.COMMERCIAL_ALBUM $COMMERCIAL_ALBUM --env.CLIENT_ID $CLIENT_ID
+        - yarn test
+      deploy:
+        provider: script
+        script: bash ./deploy/script.sh
+        skip_cleanup: true
+        on:
+          branch: master

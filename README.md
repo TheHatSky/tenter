@@ -1,4 +1,1 @@
-#Tenter
-
-[This site](tenter.me) remastered on ASP.NET vNext.
-
+[![Build Status](https://travis-ci.com/TheHatSky/tenter.svg?branch=master)](https://travis-ci.com/TheHatSky/tenter)
