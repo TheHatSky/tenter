@@ -197,6 +197,14 @@ class Application {
 			
 		this.resizeWatcher();
 
+		this.updateGallaryBackgroudSize(true);
+		this.prepareIconsSize();
+		this.infoHandler();
+		
+		setTimeout(function() {
+			$('.loader').fadeOut(1000);
+		}, 1000);
+		/*
 		$('#fullpage').fullpage({
 			sectionSelector: 'section',
 			anchors: ['', 'contacts', "weddings", "fashion", "commercial"],
@@ -251,6 +259,7 @@ class Application {
 				}
 			}
 		});
+		*/
 	}
 
 	private blockGallaryNavigation = (gallaryName: string, navigationSelector: string) => {
