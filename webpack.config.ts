@@ -1,8 +1,10 @@
 import path = require("path");
 
 export default () => ({
-  entry: {
-    application: "./js/application.ts",
+  entry: "./js/application.ts",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "application.js"
   },
   target: "node",
   module: {
@@ -13,7 +15,7 @@ export default () => ({
         exclude: /node_modules/
       },
       {
-        test: /\.scss$/i,
+        test: /\.scss$/,
         use: [
           "style-loader",
           "css-loader",
@@ -23,6 +25,11 @@ export default () => ({
     ]
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"]
+    extensions: [".tsx", ".ts", ".scss", ".js"]
+  },
+  devtool : 'source-map',
+  devServer: {
+    publicPath: '/dist/',
+    host: '192.168.1.41'
   }
 });

@@ -1,8 +1,5 @@
-const $ = require("./vendor/jquery.js");
 import "./vendor/evil-icons.js";
-import "./vendor/jquery.fullPage.js";
-import "./vendor/jquery.slimscroll.min.js";
-import "./vendor/jquery.easings.min.js";
+import "./snap.scss";
 
 import { Settings } from "./Settings";
 import { Orientation, Device } from "./Device";
@@ -30,7 +27,9 @@ class Application {
 		};
 
 		this.onOrientationChange();
-		$(this.initialize);
+
+		// On load finish
+		this.initialize();
 
 		for(let name of ["eCOph24", "2SSDovb", "NNgTqg1"])
 		{
@@ -38,9 +37,8 @@ class Application {
 			img.src = `./images/${name}${this.settings.device.thumbnail}.jpg`;
 		}
 		
-		$('[data-image-name]').toArray().forEach((element, index) => {
-			var elem = $(element);
-			var imageName = elem.data('image-name');
+		document.querySelectorAll('[data-image-name]').forEach((element) => {
+			const imageName = element.getAttribute('data-image-name');
 			//elem.css('background-image', 'url(/images/' + this.settings.device.imageFolder + '/' + imageName + ')');
 			//elem.css('background-image', `url(https://i.imgur.com/${imageName}${this.settings.device.imgurThumbnail}.jpg)`);
 			const imgL = new Image();
@@ -52,24 +50,23 @@ class Application {
 
 	private updateGallaryBackgroudSize = (sizeChanged: boolean) => {
 		if (this.settings.orientation == Orientation.Portrait)
-			$('.portrait').css('background-size', 'cover');
+			document.querySelector<HTMLElement>('.portrait').style.backgroundSize = 'cover';
 		else
-			$('.portrait').css('background-size', 'contain');
+			document.querySelector<HTMLElement>('.portrait').style.backgroundSize = 'contain';
 
 		if (sizeChanged){
-			$('[data-image-name]').toArray().forEach((element, index) => {
-				var elem = $(element);
-				var imageName = elem.data('image-name');
+			document.querySelectorAll<HTMLElement>('[data-image-name]').forEach((element) => {
+				const imageName = element.getAttribute('data-image-name');
 				//elem.css('background-image', 'url(/images/' + this.settings.device.imageFolder + '/' + imageName + ')');
 				//elem.css('background-image', `url(https://i.imgur.com/${imageName}${this.settings.device.imgurThumbnail}.jpg)`);
-				elem.css('background-image', `url(images/${imageName}${this.settings.device.thumbnail}.jpg)`);
+				element.style.backgroundImage  = `url(images/${imageName}${this.settings.device.thumbnail}.jpg)`;
 			});
 			
 			for (let key in this.sizes) {
 				const size = this.sizes[key];
 				
 				const width = this.settings.screenWidth / (size + 1);
-				
+				/*
 				$('.case.' + key)
 					.find('.fp-slidesNav > ul > li > a > span')
 					.css('width', width + 'px')
@@ -78,55 +75,55 @@ class Application {
 				$('.case.' + key)
 					.find('.fp-slidesNav ul li')
 					.css('width', width + 'px')
+				*/
 			}
 		}
 	};
 
 	private updateIconsSize = () => {
-		$('.container').find('.icon--s, .icon--m, .icon--l').each((index, element) => {
-			$(element)
-				.removeClass('icon--s')
-				.removeClass('icon--m')
-				.removeClass('icon--l')
-				.addClass('icon--' + this.settings.device.iconSize);
+		document.querySelectorAll<HTMLElement>('.icon--s, .icon--m, .icon--l').forEach((element) => {
+			element.classList.remove('icon--s');
+			element.classList.remove('icon--m');
+			element.classList.remove('icon--l');
+			element.classList.add('icon--' + this.settings.device.iconSize);
 		});
 	}
 
 	private prepareIconsSize = () => {
-		$('.container').find('[data-size]').each((index, element) => {
-			$(element).attr('data-size', this.settings.device.iconSize);
-		});
+		// $('.container').find('[data-size]').each((index, element) => {
+		// 	$(element).attr('data-size', this.settings.device.iconSize);
+		// });
 	}
 
 	private checkResize = () => {
-		var newSettings = new Settings();
+		const newSettings = new Settings();
 		
-		var widhtChanged = newSettings.screenWidth != this.settings.screenWidth;
-		var heightChanged = newSettings.screenHeight != this.settings.screenHeight;
+		const widhtChanged = newSettings.screenWidth != this.settings.screenWidth;
+		const heightChanged = newSettings.screenHeight != this.settings.screenHeight;
 
 		return widhtChanged || heightChanged;           
 	}
 	
 	private resizeWatcher = () => {
 		setTimeout(() => {
-			if(this.checkResize())
-				$(window).trigger('resize');
+			// if(this.checkResize())
+				// $(window).trigger('resize');
 			this.resizeWatcher();
 		}, 200);
 	}
 	
 	private infoHandler = () => {
-		$(document).on('click', '.open', () => {
-			$('.close').removeClass('hidden').show();
-			$('.open').hide();
-			$('.description').fadeIn(300);
-		});
+		// $(document).on('click', '.open', () => {
+		// 	$('.close').removeClass('hidden').show();
+		// 	$('.open').hide();
+		// 	$('.description').fadeIn(300);
+		// });
 
-		$(document).on('click', '.close', () => {
-			$('.close').hide();
-			$('.open').show();
-			$('.description').fadeOut(300);
-		});
+		// $(document).on('click', '.close', () => {
+		// 	$('.close').hide();
+		// 	$('.open').show();
+		// 	$('.description').fadeOut(300);
+		// });
 	}
 	
 	private isOnscreen = function(el: HTMLElement) {
@@ -138,20 +135,20 @@ class Application {
 	};
 	
 	private setInfoVisibility = () => {
-		var isBackground = $('section.active .fp-slidesNav')
-			.find('li a')
-			.first()
-			.hasClass('active');
+		// const isBackground = $('section.active .fp-slidesNav')
+		// 	.find('li a')
+		// 	.first()
+		// 	.hasClass('active');
 
-		if (isBackground)
-			$('.bottom.layout-menu').fadeOut(300);
-		else
-			$('.bottom.layout-menu').fadeIn(300);
+		// if (isBackground)
+		// 	$('.bottom.layout-menu').fadeOut(300);
+		// else
+		// 	$('.bottom.layout-menu').fadeIn(300);
 	}
 
 	private onScreenSizeChange() {
-		var idToBeRemoved = 'mobile_device';
-		var idToBeShown = 'other_device';
+		let idToBeRemoved = 'mobile_device';
+		let idToBeShown = 'other_device';
 
 		if (this.settings.device == Device.Mobile) {
 			idToBeRemoved = 'other_device';
@@ -163,46 +160,33 @@ class Application {
 	}
 
 	private onOrientationChange() {
-		let idToBeRemoved = "portrait_contacts";
-		let idToBeShown = "landscape_contacts";
-
-		if (this.settings.orientation == Orientation.Portrait) {
-			idToBeRemoved = "landscape_contacts";
-			idToBeShown = "portrait_contacts";
-		}
-
-		document.getElementById(idToBeRemoved).className = "none";
-		document.getElementById(idToBeShown).className = "";
-
-		document
-			.getElementById('contacts-container')
-			.className = 'container ' + this.settings.device.name
 	}
 
 	private initialize = () => {
-		$(window).resize(
-			() => {
-				var oldDevice = this.settings.device;
-				this.settings = new Settings();
+		// $(window).resize(
+		// 	() => {
+		// 		const oldDevice = this.settings.device;
+		// 		this.settings = new Settings();
 				
-				var isDeviceChanged = oldDevice != this.settings.device; 
+		// 		const isDeviceChanged = oldDevice != this.settings.device; 
 				
-				setTimeout(() => {
-					this.updateGallaryBackgroudSize(isDeviceChanged);
-					this.updateIconsSize();
-					this.onScreenSizeChange();
-					this.onOrientationChange();
-				}, 0);
-			});
+		// 		setTimeout(() => {
+		// 			this.updateGallaryBackgroudSize(isDeviceChanged);
+		// 			this.updateIconsSize();
+		// 			this.onScreenSizeChange();
+		// 			this.onOrientationChange();
+		// 		}, 0);
+		// 	});
 			
 		this.resizeWatcher();
 
 		this.updateGallaryBackgroudSize(true);
 		this.prepareIconsSize();
-		this.infoHandler();
+		// this.infoHandler();
 		
 		setTimeout(function() {
-			$('.loader').fadeOut(1000);
+			// $('.loader').fadeOut(1000);
+			document.querySelector('.loader').remove();
 		}, 1000);
 		/*
 		$('#fullpage').fullpage({
@@ -241,7 +225,7 @@ class Application {
 				}
 			},
 			onSlideLeave: (anchorLink, index, slideIndex, direction, nextSlideIndex) => {
-				var gallerySize = this.sizes[anchorLink];
+				const gallerySize = this.sizes[anchorLink];
 				if (gallerySize == null)
 					return;
 
@@ -260,14 +244,6 @@ class Application {
 			}
 		});
 		*/
-	}
-
-	private blockGallaryNavigation = (gallaryName: string, navigationSelector: string) => {
-		$('.' + gallaryName + ' > ' + navigationSelector).fadeOut(Application.BlockSpeed);
-	}
-
-	private enableGallaryNavigation = (gallaryName: string, navigationSelector: string) => {
-		$('.' + gallaryName + ' > ' + navigationSelector).fadeIn(Application.BlockSpeed);
 	}
 }
 
