@@ -102,7 +102,7 @@ export const getImages = (album: string, clientId: string, callback: (info: Phot
     var options = {
         url: 'https://api.imgur.com/3/account/ArtemSakhatskiy/album/' + album,
         headers: {
-            'Authorization': 'Client-ID ' + clientId
+            'Authorization': 'Client-ID ' + clientId,
         }
     };
     request.get(options, (err, req, body) => {

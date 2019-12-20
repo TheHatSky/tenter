@@ -1,12 +1,12 @@
-import path = require("path");
+import { resolve } from "path";
 
 export default () => ({
   entry: "./js/application.ts",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: resolve(__dirname, "dist"),
     filename: "application.js"
   },
-  target: "node",
+  target: "web",
   module: {
     rules: [
       {
@@ -16,20 +16,16 @@ export default () => ({
       },
       {
         test: /\.scss$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader"
-        ]
+        use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
   },
   resolve: {
     extensions: [".tsx", ".ts", ".scss", ".js"]
   },
-  devtool : 'source-map',
+  devtool: "source-map",
   devServer: {
-    publicPath: '/dist/',
-    host: '192.168.1.41'
+    publicPath: "/dist/",
+    host: "192.168.1.48"
   }
 });
