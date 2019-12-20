@@ -21,13 +21,9 @@ export const render = (photo: Photo) => {
 
   let links = "";
   for (let person of photo.persons)
-    links += `<a class="person-link" href="${person.url}">${
-      person.name
-    }</a><br/>`;
+    links += `<a class="person-link" href="${person.url}">${person.name}</a><br/>`;
 
-  return `<div class="${photo.orientation} slide" data-image-name="${
-    photo.name
-  }">
+  return `<div class="${photo.orientation} slide" data-image-name="${photo.name}">
                 <div class="description none container">
                     <div class="row">
                         <div class="four columns">
@@ -59,7 +55,7 @@ export const renderAlbum = (album: string, clientId: string) => {
 export const downloadAlbum = async (album: string, clientId: string) => {
   await getImages(album, clientId, async images => {
     for (let image of images) {
-      console.log("Downloading:", image.description.title || "<no title>");
+      console.log("Downloading:", image.description.title || image.fileName);
       await downloadFile(image.link, `./images/${image.fileName}_original.jpg`);
       await downloadFile(
         getImageProxyLink(image.link, 1960),
