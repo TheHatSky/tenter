@@ -22,7 +22,8 @@ jobs:
       install:
         - yarn
       script:
-        - yarn webpack --mode production --env.REDESIGN_ALBUM $REDESIGN_ALBUM --env.CLIENT_ID $CLIENT_ID
+        - yarn webpack --config ./webpack.utils.config.ts --mode production --env.REDESIGN_ALBUM $REDESIGN_ALBUM --env.CLIENT_ID $CLIENT_ID
+        - yarn webpack --mode production
         - yarn test
       deploy:
         provider: script
