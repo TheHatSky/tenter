@@ -22,7 +22,7 @@ jobs:
       install:
         - yarn
       script:
-        - yarn webpack --mode production --env.WEDDINGS_ALBUM $WEDDINGS_ALBUM --env.FASHION_ALBUM $FASHION_ALBUM --env.COMMERCIAL_ALBUM $COMMERCIAL_ALBUM --env.CLIENT_ID $CLIENT_ID
+        - yarn webpack --mode production --env.REDESIGN_ALBUM $REDESIGN_ALBUM --env.CLIENT_ID $CLIENT_ID
         - yarn test
       deploy:
         provider: script
