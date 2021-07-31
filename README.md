@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.com/TheHatSky/tenter.svg?branch=master)](https://travis-ci.com/TheHatSky/tenter)
+[Github](https://github.com/TheHatSky/tenter)
