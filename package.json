@@ -1,41 +1,44 @@
 {
-    "name": "tenter",
-    "version": "1.1.0",
-    "description": "Personal website",
-    "main": "imgur.js",
-    "dependencies": {
-        "global": "^4.4.0",
-        "request": "^2.88.0"
-    },
-    "devDependencies": {
-        "@types/node": "^12.12.12",
-        "@types/request": "2.48.3",
-        "@types/webpack": "^4.41.0",
-        "css-loader": "^3.2.0",
-        "sass": "1.78.0",
-        "sass-loader": "^8.0.0",
-        "style-loader": "^1.0.0",
-        "ts-loader": "^6.2.1",
-        "ts-node": "^8.5.2",
-        "typescript": "^3.7.2",
-        "typescript-require": "^0.2.10",
-        "webpack": "^4.41.2",
-        "webpack-cli": "^3.3.10",
-        "webpack-dev-server": "^3.9.0"
-    },
-    "scripts": {
-        "test": "echo \"No test specified\" && exit 0",
-        "build": "webpack --mode=development --config=webpack.config.ts",
-        "build:utils": "webpack --mode=development --config=webpack.utils.config.ts"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@gitlab.com/thehat/tenter.git"
-    },
-    "author": "Artem Sakhatskiy <sakhatskiy@yahoo.com>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://gitlab.com/thehat/tenter/issues"
-    },
-    "homepage": "https://gitlab.com/thehat/tenter#README"
+  "name": "tenter",
+  "version": "1.1.0",
+  "description": "Personal website",
+  "main": "imgur.js",
+  "dependencies": {
+    "global": "^4.4.0",
+    "request": "^2.88.0"
+  },
+  "engines": {
+    "node": "21"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.12",
+    "@types/request": "2.48.3",
+    "@types/webpack": "^4.41.0",
+    "css-loader": "^3.2.0",
+    "sass": "1.78.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2",
+    "typescript-require": "^0.2.10",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0",
+    "build": "webpack --mode=development --config=webpack.config.ts",
+    "build:utils": "webpack --mode=development --config=webpack.utils.config.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/thehat/tenter.git"
+  },
+  "author": "Artem Sakhatskiy <sakhatskiy@yahoo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/thehat/tenter/issues"
+  },
+  "homepage": "https://gitlab.com/thehat/tenter#README"
 }
