@@ -6,6 +6,6 @@ tmp/
 .vs/
 .vscode/
 dist/
-application.js
-application.js.map
-utils.js
+**/application.js
+**/application.js.map
+**/utils.js

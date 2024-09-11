@@ -1,7 +1,9 @@
+import { resolve } from "path";
+
 export default () => ({
   entry: "./js/application.ts",
   output: {
-    path: __dirname,
+    path: resolve(__dirname, "public"),
     filename: "application.js",
   },
   target: "web",

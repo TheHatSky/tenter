@@ -56,18 +56,21 @@ export const downloadAlbum = async (album: string, clientId: string) => {
   await getImages(album, clientId, async (images) => {
     for (let image of images) {
       console.log("Downloading:", image.description.title || image.fileName);
-      await downloadFile(image.link, `./images/${image.fileName}_original.jpg`);
+      await downloadFile(
+        image.link,
+        `./public/images/${image.fileName}_original.jpg`
+      );
       await downloadFile(
         getImageProxyLink(image.link, 1960),
-        `./images/${image.fileName}l.jpg`
+        `./public/images/${image.fileName}l.jpg`
       );
       await downloadFile(
         getImageProxyLink(image.link, 1280),
-        `./images/${image.fileName}m.jpg`
+        `./public/images/${image.fileName}m.jpg`
       );
       await downloadFile(
         getImageProxyLink(image.link, 800),
-        `./images/${image.fileName}s.jpg`
+        `./public/images/${image.fileName}s.jpg`
       );
     }
   });
