@@ -38,13 +38,13 @@ export const render = (photo: Photo) => {
 };
 
 export const renderAlbum = (album: string, clientId: string) => {
-  getImages(album, clientId, images => {
+  getImages(album, clientId, (images) => {
     let results = "";
     for (let image of images) {
       let photo: Photo = {
         name: image.fileName,
         orientation: image.aspectRatio > 1 ? "album" : "portrait",
-        persons: image.description.persons
+        persons: image.description.persons,
       };
 
       results += render(photo);
@@ -53,7 +53,7 @@ export const renderAlbum = (album: string, clientId: string) => {
 };
 
 export const downloadAlbum = async (album: string, clientId: string) => {
-  await getImages(album, clientId, async images => {
+  await getImages(album, clientId, async (images) => {
     for (let image of images) {
       console.log("Downloading:", image.description.title || image.fileName);
       await downloadFile(image.link, `./images/${image.fileName}_original.jpg`);
@@ -75,9 +75,9 @@ export const downloadAlbum = async (album: string, clientId: string) => {
 
 const downloadFile = (link, name) => {
   console.log(link, "=>", path.resolve(name));
-  return new Promise(resolve => {
+  return new Promise<void>((resolve) => {
     const file = fs.createWriteStream(name);
-    const request = http.get(link, response => {
+    const request = http.get(link, (response) => {
       response.pipe(file);
       resolve();
     });
