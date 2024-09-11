@@ -1,10 +1,8 @@
-import { resolve } from "path";
-
 export default () => ({
   entry: "./js/application.ts",
   output: {
-    path: resolve(__dirname, "dist"),
-    filename: "application.js"
+    path: __dirname,
+    filename: "application.js",
   },
   target: "web",
   module: {
@@ -12,20 +10,20 @@ export default () => ({
       {
         test: /\.tsx?$/,
         loader: "ts-loader",
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"]
-      }
-    ]
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+    ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".scss", ".js"]
+    extensions: [".tsx", ".ts", ".scss", ".js"],
   },
   devtool: "source-map",
   devServer: {
     publicPath: "/dist/",
-    host: "192.168.1.48"
-  }
+    host: "192.168.1.48",
+  },
 });
