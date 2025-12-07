@@ -63,7 +63,7 @@ jobs:
           tar -czf release.tar.gz *
 
       - name: Upload release
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: release
           path: release.tar.gz
@@ -74,7 +74,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Download release
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: release
 
