@@ -26,14 +26,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - name: Use Node.js 10
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - name: Use Node.js 22
+        uses: actions/setup-node@v3
         with:
-          node-version: 10.x
+          node-version: 22.x
 
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         env:
           cache-name: cache-node-modules
         with:
@@ -48,7 +48,7 @@ jobs:
       - name: Build
         run: |
           yarn
-          yarn webpack --config ./webpack.utils.config.ts --mode production --env.REDESIGN_ALBUM $REDESIGN_ALBUM --env.CLIENT_ID $CLIENT_ID
+          yarn webpack --config ./webpack.utils.config.ts --mode development --env.REDESIGN_ALBUM $REDESIGN_ALBUM --env.CLIENT_ID $CLIENT_ID
           yarn webpack --mode production
           yarn test
 

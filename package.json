@@ -8,7 +8,7 @@
     "request": "^2.88.0"
   },
   "engines": {
-    "node": "21"
+    "node": "22"
   },
   "devDependencies": {
     "@types/node": "^12.12.12",
