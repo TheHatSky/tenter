@@ -1,0 +1,14 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# If the requested file exists, serve it
+RewriteCond %{REQUEST_FILENAME} !-f
+# If the requested directory exists, serve it
+RewriteCond %{REQUEST_FILENAME} !-d
+# Try adding .html extension
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# Fallback to index.html only if the file doesn't exist
+# (This is handled by DirectoryIndex, but we want to be explicit)
+DirectoryIndex index.html
+
